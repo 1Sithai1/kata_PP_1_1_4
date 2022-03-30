@@ -1,8 +1,7 @@
 package jm.task.core.jdbc.util;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.lang.reflect.InvocationTargetException;
+import java.sql.*;
 
 public class Util {
 
@@ -13,10 +12,12 @@ public class Util {
     public static Connection getConnection() {
         Connection connection = null;
         try {
+            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
             connection = DriverManager.getConnection(dbURL, dbUserName, dbPassword);
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException | InvocationTargetException | InstantiationException | IllegalAccessException | NoSuchMethodException e) {
             e.printStackTrace();
         }
         return connection;
     }
+
 }
