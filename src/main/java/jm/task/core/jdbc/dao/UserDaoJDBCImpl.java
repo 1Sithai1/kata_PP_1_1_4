@@ -26,6 +26,11 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
             connection.commit();
 
         } catch (SQLException e) {
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
             e.printStackTrace();
         }
 
@@ -37,6 +42,11 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
             e.printStackTrace();
         }
     }
@@ -57,6 +67,11 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
             connection.commit();
 
         } catch (SQLException e) {
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
             e.printStackTrace();
         }
     }
@@ -73,6 +88,11 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
             connection.commit();
 
         } catch (SQLException e) {
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
             e.printStackTrace();
         }
     }
@@ -97,6 +117,11 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
                 users.add(new User(name, lastName, age));
             }
         } catch (SQLException e) {
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
             e.printStackTrace();
         }
         return users;
@@ -112,6 +137,11 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
             connection.commit();
 
         } catch (SQLException e) {
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
             e.printStackTrace();
         }
     }
@@ -137,6 +167,11 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
 //                users.add(new User(name, lastName, age));
 //            }
 //        } catch (SQLException e) {
+//            try {
+//                connection.rollback();
+//            } catch (SQLException ex) {
+//                ex.printStackTrace();
+//            }
 //            e.printStackTrace();
 //        }
 //        return users;
