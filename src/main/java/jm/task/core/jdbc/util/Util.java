@@ -28,8 +28,9 @@ public class Util {
         return connection;
     }
 
+    private static SessionFactory sessionFactory;
+
     public static SessionFactory getSessionFactory() {
-        SessionFactory sessionFactory = null;
         if (sessionFactory == null) {
             try {
                 Configuration configuration = new Configuration();
@@ -39,11 +40,10 @@ public class Util {
                 settings.put(Environment.URL, dbURL);
                 settings.put(Environment.USER, dbUserName);
                 settings.put(Environment.PASS, dbPassword);
-                settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
+                settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
                 settings.put(Environment.SHOW_SQL, "true");
                 settings.put(Environment.FORMAT_SQL, "true");
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
-                settings.put(Environment.HBM2DDL_AUTO, "creat-drop");
 
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(User.class);
